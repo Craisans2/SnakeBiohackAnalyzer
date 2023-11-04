@@ -1,8 +1,9 @@
 #hello world
 #imports
-cv2.improt
-print("hello world")
+import cv2 as cv
 
+#function to 
 
+#Function to seperate the video into images
 def imageParser():
     vidMed = 7
