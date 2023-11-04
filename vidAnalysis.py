@@ -1,28 +1,27 @@
 import cv2 as cv
-pip install tensorflow
-pip install tf_slim
-pip install tf-models-official
-pip install opencv-python
+#pip install tensorflow
+#pip install tf_slim
+#pip install tf-models-official
+#pip install opencv-python
 
 #hello world
 #imports
+#dylan  testing if his stupid code works
 #Function to seperate the video into images
-#def imageParser(video_file):
-
+def imageParser(video_file):
     vidMedCap = cv2.VideoCapture(video_file)
     frameNum = 0
-    frames = [] 
     while(True):
         #process the frames
         
         success,frame = vidMedCap.read()
         if success:
-            cv2.imwrite(frames,frame)
+            cv.imwrite(f'C:/Users/dylan/OneDrive/Desktop/Biohack/Images',frame)
         else:
             break
         
         frameNum=frameNum+1
-vidMedCap.release()
+    vidMedCap.release()
 
 #
 
