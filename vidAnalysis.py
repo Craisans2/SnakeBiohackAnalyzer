@@ -39,6 +39,18 @@ hasCancer = bool
 
 if hasDiabetes or hasInfectionHistory or hasObesity or hasDiabetes or hasSmokes or hasCancer:
     highrisk = True
-    print("the patient is high risk")
+    
 
+
+
+#Inputs for postsurgery infection signs
+hasSepsis = bool(input("does the patient show signs of brain fog, fever or clammy skin: enter 1 or 0: "))
+hasPus = bool(input("Is there pus buildup around the incision: enter 1 or 0: "))
+hasSwell = bool(input("does the patient have excess swelling around the incision site: enter 1 or 0: "))
+
+if hasSepsis or hasInfectionHistory or hasSwell:
+    highrisk = True
+    
+if highrisk:
+    print("The patient is high risk and needs monitored")
 
