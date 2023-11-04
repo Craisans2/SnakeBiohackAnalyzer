@@ -8,7 +8,7 @@ import cv2 as cv
 #imports
 #dylan  testing if his stupid code works
 #Function to seperate the video into images
-def imageParser(video_file):
+def imageParser(video_file,imageFile):
     vidMedCap = cv.VideoCapture(video_file)
     frameNum = 0
     while(True):
@@ -16,7 +16,7 @@ def imageParser(video_file):
         
         success,frame = vidMedCap.read()
         if success:
-            cv.imwrite(f'C:/Users/dylan/OneDrive/Desktop/Biohack/Images/frame_{frameNum}.jpg',frame)
+            cv.imwrite(f'{imageFile}frame_{frameNum}.jpg',frame)
         else:
             break
         
@@ -43,5 +43,6 @@ hasCancer = bool(input("does the patient have cancer or is in remission: enter 1
 if hasDiabetes or hasInfectionHistory or hasObesity or hasDiabetes or hasSmokes or hasCancer:
     highrisk = True
 
-videoCam = str(input("please enter the video you wish to analyze"))
-imageParser(videoCam)
+videoFile = str(input("please enter the video you wish to analyze"))
+imageFile = str(input("Please enter the place where you wish for the files to emerge from :D"))
+imageParser(videoFile, imageFile)
