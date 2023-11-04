@@ -44,4 +44,4 @@ if hasDiabetes or hasInfectionHistory or hasObesity or hasDiabetes or hasSmokes 
     highrisk = True
 
 videoCam = str(input("please enter the video you wish to analyze"))
-imageParser('C:/Users/dylan/OneDrive/Desktop/Biohack/IMG_4688.MOV')
+imageParser(videoCam)
