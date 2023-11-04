@@ -54,4 +54,4 @@ if highrisk:
     print("The patient is high risk and needs monitored")
 
 videoCam = str(input("please enter the video you wish to analyze"))
-imageParser('C:/Users/dylan/OneDrive/Desktop/Biohack/IMG_4688.MOV')
+imageParser(videoCam)
