@@ -12,7 +12,7 @@ def processIm(imPath):
     model = DetrForObjectDetection.from_pretrained(model_name)
 
     # Path to the image you want to analyze
-    image_path = imPath
+    image_path = '{imPath}.jpg'
 
     # Load and preprocess the image
     image = processor(images=image_path, return_tensors="pt")
