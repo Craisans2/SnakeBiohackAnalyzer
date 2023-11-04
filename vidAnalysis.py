@@ -28,10 +28,6 @@ def imageParser(video_file,imageFile):
 #Presurgery Risk factors that increase infection risk
 highrisk = False
 
-hasDiabetes = False
-hasInfectionHistory = False
-hasObesity = False
-hasSmokes = False
 
 #Inputs for Risks
 hasDiabetes = bool(input("does the patient have diabetes: enter 1 or 0: "))
@@ -42,6 +38,20 @@ hasCancer = bool(input("does the patient have cancer or is in remission: enter 1
 
 if hasDiabetes or hasInfectionHistory or hasObesity or hasDiabetes or hasSmokes or hasCancer:
     highrisk = True
+    
+
+
+
+#Inputs for postsurgery infection signs
+hasSepsis = bool(input("does the patient show signs of brain fog, fever or clammy skin: enter 1 or 0: "))
+hasPus = bool(input("Is there pus buildup around the incision: enter 1 or 0: "))
+hasSwell = bool(input("does the patient have excess swelling around the incision site: enter 1 or 0: "))
+
+if hasSepsis or hasInfectionHistory or hasSwell:
+    highrisk = True
+    
+if highrisk:
+    print("The patient is high risk and needs monitored")
 
 videoFile = str(input("please enter the video you wish to analyze"))
 imageFile = str(input("Please enter the place where you wish for the files to emerge from :D"))
