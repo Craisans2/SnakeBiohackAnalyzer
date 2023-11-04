@@ -1,3 +1,8 @@
 #hello world
+#imports
+cv2.improt
+print("hello world")
 
->>> print("hello world")
+
+def imageParser():
+    vidMed = 7
