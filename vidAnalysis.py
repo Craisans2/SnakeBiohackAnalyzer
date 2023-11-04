@@ -1,5 +1,4 @@
 import cv2 as cv
-pip install tensorflow
 #pip install tf_slim
 #pip install tf-models-official
 #pip install opencv-python
@@ -22,7 +21,7 @@ def imageParser(video_file,imageFile):
         frameNum=frameNum+1
     vidMedCap.release()
 
-#
+
 
 #Presurgery Risk factors that increase infection risk
 highrisk = False
