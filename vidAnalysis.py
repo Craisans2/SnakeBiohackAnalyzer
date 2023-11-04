@@ -1,12 +1,11 @@
 import cv2 as cv
-#pip install tensorflow
+pip install tensorflow
 #pip install tf_slim
 #pip install tf-models-official
 #pip install opencv-python
 
 #hello world
 #imports
-#dylan  testing if his stupid code works
 #Function to seperate the video into images
 def imageParser(video_file,imageFile):
     vidMedCap = cv.VideoCapture(video_file)
@@ -16,7 +15,7 @@ def imageParser(video_file,imageFile):
         
         success,frame = vidMedCap.read()
         if success:
-            cv.imwrite(f'{imageFile}frame_{frameNum}.jpg',frame)
+            cv.imwrite(f'{imageFile}/frame_{frameNum}.jpg',frame)
         else:
             break
         
@@ -53,6 +52,7 @@ if hasSepsis or hasInfectionHistory or hasSwell:
 if highrisk:
     print("The patient is high risk and needs monitored")
 
+#Put in the post surgery video for problems
 videoFile = str(input("please enter the video you wish to analyze"))
 imageFile = str(input("Please enter the place where you wish for the files to emerge from :D"))
 imageParser(videoFile, imageFile)
