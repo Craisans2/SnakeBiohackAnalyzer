@@ -12,7 +12,7 @@ def processIm(imPath):
     model = DetrForObjectDetection.from_pretrained(model_name)
 
     # Path to the image you want to analyze
-    image_path = '{imPath}.jpg'
+    image_path = 'C:/Users/dylan/OneDrive/Desktop/Biohack/Images/frame_0.jpg.jpg'
 
     # Load and preprocess the image
     image = processor(images=image_path, return_tensors="pt")
@@ -98,4 +98,4 @@ imageFile = 'C:/Users/dylan/OneDrive/Desktop/Biohack/Images'
 frameNum = imageParser(videoFile,imageFile)
 
 for i in range(frameNum):
-    processIm('{imageFile}/frame_{frameNum}.jpg')
+    processIm('{imageFile}/frame_{frameNum}')
