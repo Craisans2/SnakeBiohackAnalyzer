@@ -98,8 +98,8 @@ hasSwell = bool(input("does the patient have excess swelling around the incision
 if hasSepsis or hasInfectionHistory or hasSwell:
     highrisk = True
 
-videoFile = cv.VideoCapture(input("Enter a video to analyze: "))
-imageFile = Image.open(input("Enter a file to save images to: "))
+videoFile = input("Enter a video to analyze: ")
+imageFile = input("Enter a file to save images to: ")
 frameNum = imageParser(videoFile,imageFile)
 i = 0
 while i<frameNum:
