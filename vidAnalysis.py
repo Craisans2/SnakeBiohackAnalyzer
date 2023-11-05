@@ -3,6 +3,7 @@ import numpy as np
 import tensorflow as tf
 import torch
 from transformers import DetrImageProcessor, DetrForObjectDetection
+from PIL import Image
 
 # Load the pre-trained DETR model and processor
 model_name = "facebook/detr-resnet-50"
@@ -10,7 +11,7 @@ processor = DetrImageProcessor.from_pretrained(model_name)
 model = DetrForObjectDetection.from_pretrained(model_name)
 
 # Path to the image you want to analyze
-image_path = 'Users/davidbutz/Desktop/IMG_0018.jpeg'
+image_path = Image.open("Users\davidbutz\Desktop\IMG_0018.jpeg")
 
 # Load and preprocess the image
 image = processor(images=image_path, return_tensors="pt")
