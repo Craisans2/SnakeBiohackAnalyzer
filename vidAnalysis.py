@@ -3,31 +3,38 @@ import numpy as np
 import tensorflow as tf
 import torch
 from transformers import DetrImageProcessor, DetrForObjectDetection
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 from PIL import Image
 
 #sectionImages
-def processIm(imPath):
+def processIm(imPath,i):
     # Load the pre-trained DETR model and processor
     model_name = "facebook/detr-resnet-50"
     processor = DetrImageProcessor.from_pretrained(model_name)
     model = DetrForObjectDetection.from_pretrained(model_name)
 
-# Path to the image you want to analyze
-image_path = Image.open("Users\davidbutz\Desktop\IMG_0018.jpeg")
+    # Path to the image you want to analyze
+    imStr = f'{imPath}/frame_{i}.jpg'
+    print(imStr)
+    image_path = Image.open(imStr)
 
     # Load and preprocess the image
     image = processor(images=image_path, return_tensors="pt")
     outputs = model(**image)
 
+    # Check the structure of the output tensors
+    # Get the predicted boxes and labels for the first image in the batch
+    pred_boxes = outputs.logits[0, :, :4]  # Assuming the first 4 values in the third dimension represent box coordinates
+    pred_logits = outputs.logits[0, :, 4:]  # Assuming the remaining values represent logits for each class
+
     # Get the predicted boxes and labels
-    pred_boxes = outputs.logits["pred_boxes"]
-    pred_logits = outputs.logits["pred_logits"]
 
     # Threshold for detection confidence
     detection_threshold = 0.5
 
     # Filter detections based on confidence score
-    detections = pred_boxes[0][pred_logits[0][:, 0] > detection_threshold]
+    detections = pred_boxes[pred_logits[:, 0] > detection_threshold]
 
     # You can now work with the detected bounding boxes (detections)
     # You may want to visualize or process the results further as needed
@@ -37,12 +44,8 @@ image_path = Image.open("Users\davidbutz\Desktop\IMG_0018.jpeg")
         print("Box Coordinates:", box.tolist())
 
     # Example: Visualize the detected boxes (you can use a library like matplotlib)
-    import matplotlib.pyplot as plt
-    import matplotlib.patches as patches
-    from PIL import Image
 
-    image = Image.open(image_path)
-    plt.imshow(image)
+    plt.imshow(image_path)
 
     ax = plt.gca()
     for box in detections:
@@ -64,7 +67,6 @@ def imageParser(video_file,imageFile):
             cv.imwrite(f'{imageFile}/frame_{frameNum}.jpg',frame)
         else:
             break
-        
         frameNum=frameNum+1
     vidMedCap.release()
     return frameNum  
@@ -97,6 +99,8 @@ if hasSepsis or hasInfectionHistory or hasSwell:
 videoFile = 'C:/Users/dylan/OneDrive/Desktop/Biohack/IMG_4688.MOV'
 imageFile = 'C:/Users/dylan/OneDrive/Desktop/Biohack/Images'
 frameNum = imageParser(videoFile,imageFile)
+i = 0
+while i<frameNum:
+    processIm(imageFile,i)
+    i=i+1
 
-for i in range(frameNum):
-    processIm('{imageFile}/frame_{frameNum}')
