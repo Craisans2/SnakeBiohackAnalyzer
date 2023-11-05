@@ -4,7 +4,7 @@ import tensorflow as tf
 import torch
 from transformers import DetrImageProcessor, DetrForObjectDetection
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+import matplotlib.patches as patchess
 from PIL import Image
 
 #sectionImages
