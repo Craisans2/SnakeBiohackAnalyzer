@@ -29,6 +29,8 @@ def processIm(imPath,i):
     pred_logits = outputs.logits[0, :, 4:]  # Assuming the remaining values represent logits for each class
 
     # Get the predicted boxes and labels
+    pred_boxes = outputs.logits["pred_boxes"]
+    pred_logits = outputs.logits["pred_logits"]
 
     # Threshold for detection confidence
     detection_threshold = 0.5
@@ -96,8 +98,8 @@ hasSwell = bool(input("does the patient have excess swelling around the incision
 if hasSepsis or hasInfectionHistory or hasSwell:
     highrisk = True
 
-videoFile = 'C:/Users/dylan/OneDrive/Desktop/Biohack/IMG_4688.MOV'
-imageFile = 'C:/Users/dylan/OneDrive/Desktop/Biohack/Images'
+videoFile = cv.VideoCapture(input("Enter a video to analyze: "))
+imageFile = Image.open(input("Enter a file to save images to: "))
 frameNum = imageParser(videoFile,imageFile)
 i = 0
 while i<frameNum:
